@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Web Crawler</title>
+</head>
+<body>
+   
+
+        <div class="page">
+            <div class="top">
+                <div class="userDetails">
+                    <div clas="imagem">
+                        <img src="img.png" class="imgProfile">
+                    </div>
+                        <h3>Web Crawler<br><span>Últimas noticias BBB</span></h3>
+
+                       <div class="container"></div>
+
+                        <script>
+                            (async() => {
+                                const response = await fetch('./twitter.json')
+                                const data = await response.json();
+                                
+                                const htmlList = data
+                                .map( ({ src })  => `<li><img src="${src}" class="cover"></li>`)
+                                .join('');
+                    
+                                document.querySelector('.container').innerHTML = htmlList;
+                            })();
+                        </script>
+                
+                
+                    </div>
+            </div>
+        </div>
+
+</body>
+</html>
